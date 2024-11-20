@@ -30,7 +30,9 @@ public class CameraController : MonoBehaviour
     private Vector3 desiredPosition;
     private Quaternion desiredRotation;
 
+
     //SHAKE
+    [Header("Shake Settings")]
     public float shakeDuration = 0.2f;
     public float shakeMagnitude = 0.1f;
 

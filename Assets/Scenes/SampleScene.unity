@@ -708,6 +708,7 @@ MonoBehaviour:
   transitionSpeed: 2
   shakeDuration: 0.2
   shakeMagnitude: 0.1
+  zoomLevel: 1
 --- !u!1 &1261620303
 GameObject:
   m_ObjectHideFlags: 0
