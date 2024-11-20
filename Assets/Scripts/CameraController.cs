@@ -12,34 +12,40 @@ public class CameraController : MonoBehaviour
     public CameraMode currentMode = CameraMode.ThirdPerson;
 
     public Transform target;
-    public float distance = 5f;
-    public float height = 2f;
+
+    [Header("Third Person Settings")]
+    public float thirdPersonDistance = 5f;
+    public float thirdPersonHeight = 2f;
+
+    [Header("Top Down Settings")]
+    public float topDownHeight = 20f;
+
+    [Header("Side Scroll Settings")]
+    public float sideScrollDistance = 5f;
+    public float sideScrollHeight = 2f;
+
     public float rotationSpeed = 5f;
     public float transitionSpeed = 2f;
 
     private Vector3 desiredPosition;
     private Quaternion desiredRotation;
-    private float originalHeight;
 
     private void Update()
     {
         switch (currentMode)
         {
             case CameraMode.ThirdPerson:
-                originalHeight = height; // Store original height
-                desiredPosition = target.position + new Vector3(0, height, -distance);
+                desiredPosition = target.position + new Vector3(0, thirdPersonHeight, -thirdPersonDistance);
                 desiredRotation = Quaternion.LookRotation(target.position - transform.position);
                 break;
             case CameraMode.TopDown:
-                height = 20f; // Set height for top-down view
-                desiredPosition = new Vector3(target.position.x, target.position.y + height, target.position.z);
+                desiredPosition = new Vector3(target.position.x, target.position.y + topDownHeight, target.position.z);
                 desiredRotation = Quaternion.Euler(90, 0, 0);
                 break;
             case CameraMode.SideScroll:
-                height = originalHeight; // Restore original height
-                desiredPosition = new Vector3(target.position.x - distance, target.position.y + height, target.position.z);
+                desiredPosition = new Vector3(target.position.x - sideScrollDistance, target.position.y + sideScrollHeight, target.position.z);
                 desiredRotation = Quaternion.Euler(0, 90, 0);
-                desiredPosition.x -= distance / 2;
+                desiredPosition.x -= sideScrollDistance / 2;
                 break;
         }
 

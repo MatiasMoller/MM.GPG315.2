@@ -428,10 +428,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14175fdab30698140bee95e05bd37f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMode: 2
+  currentMode: 0
   target: {fileID: 323591121}
-  distance: 10
-  height: 1
+  thirdPersonDistance: 5
+  thirdPersonHeight: 2
+  topDownHeight: 20
+  sideScrollDistance: 10
+  sideScrollHeight: 1
   rotationSpeed: 5
   transitionSpeed: 2
 --- !u!1660057539 &9223372036854775807
