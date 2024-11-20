@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
     private Vector3 desiredPosition;
     private Quaternion desiredRotation;
 
-
+    //SHAKE
     public float shakeDuration = 0.2f;
     public float shakeMagnitude = 0.1f;
 
@@ -40,6 +40,7 @@ public class CameraController : MonoBehaviour
     {
         shakeTimer = shakeDuration;
     }
+
 
     public void SetThirdPersonMode()
     {
@@ -54,6 +55,11 @@ public class CameraController : MonoBehaviour
     {
         currentMode = CameraMode.SideScroll;
     }
+
+    //ZOOM
+    [Range(1f, 10f)]
+    public float zoomLevel = 5f;
+
     private void Update()
     {
         switch (currentMode)
@@ -87,5 +93,10 @@ public class CameraController : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * transitionSpeed);
         transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, Time.deltaTime * rotationSpeed);
+
+        // Adjust camera field of view based on zoom level
+        Camera.main.fieldOfView = 60f / zoomLevel;
     }
+
+   
 }
