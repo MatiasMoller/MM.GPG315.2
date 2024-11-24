@@ -28,7 +28,7 @@ public class CameraController : MonoBehaviour
     [Header("Side Scroll Settings")]
     public float sideScrollDistance = 5f;
     public float sideScrollHeight = 2f;
-    public float cameraOffset = 0f; // Add this variable for custom offset
+    public float cameraOffset = 0f; 
 
 
    
