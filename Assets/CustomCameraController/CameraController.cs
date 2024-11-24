@@ -13,6 +13,11 @@ public class CameraController : MonoBehaviour
 
     public Transform target;
 
+
+    [Header("General Settings")]
+    public float rotationSpeed = 5f;
+    public float transitionSpeed = 2f;
+
     [Header("Third Person Settings")]
     public float thirdPersonDistance = 5f;
     public float thirdPersonHeight = 2f;
@@ -23,9 +28,10 @@ public class CameraController : MonoBehaviour
     [Header("Side Scroll Settings")]
     public float sideScrollDistance = 5f;
     public float sideScrollHeight = 2f;
+    public float cameraOffset = 0f; // Add this variable for custom offset
 
-    public float rotationSpeed = 5f;
-    public float transitionSpeed = 2f;
+
+   
 
     private Vector3 desiredPosition;
     private Quaternion desiredRotation;
@@ -77,7 +83,7 @@ public class CameraController : MonoBehaviour
             case CameraMode.SideScroll:
                 desiredPosition = new Vector3(target.position.x - sideScrollDistance, target.position.y + sideScrollHeight, target.position.z);
                 desiredRotation = Quaternion.Euler(0, 90, 0);
-                desiredPosition.x -= sideScrollDistance / 2;
+                desiredPosition.z -= cameraOffset; // Adjust Z position for left/right movement
                 break;
         }
 
